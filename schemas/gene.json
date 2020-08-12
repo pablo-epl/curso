@@ -1,0 +1,84 @@
+{
+  "gene": {
+    "validator": {
+      "$jsonSchema": {
+        "type": "object",
+        "required": [
+          "_id",
+          "organism_id"
+        ],
+        "properties": {
+          "_id": {
+            "type": "string",
+            "pattern": "^RDB[A-Z]{7}[0-9]{5}$"
+          },
+          "bnumber": {
+            "type": "string"
+          },
+          "fragments": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "object",
+              "required": [
+                "leftEndPosition",
+                "rightEndPosition",
+                "strand"
+              ],
+              "properties": {
+                "centisomePosition": {
+                  "type": "number"
+                },
+                "leftEndPosition": {
+                  "type": "number",
+                  "multipleOf": 1.0
+                },
+                "rightEndPosition": {
+                  "type": "number",
+                  "multipleOf": 1.0
+                },
+                "sequence": {
+                  "type": "string",
+                  "pattern": "^[ATCGatcg]+$"
+                },
+                "strand": {
+                  "type": "string",
+                  "enum": ["forward", "reverse"]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "gcContent": {
+            "type": "number"
+          },
+          "leftEndPosition": {
+            "type": "number",
+            "multipleOf": 1.0
+          },
+          "name": {
+            "type": "string"
+          },
+          "organism_id": {
+            "type": "string"
+          },
+          "rightEndPosition": {
+            "type": "number",
+            "multipleOf": 1.0
+          },
+          "sequence": {
+            "type": "string",
+            "pattern": "^[ATCGatcg]+$"
+          },
+          "strand": {
+            "type": "string",
+            "enum": ["forward", "reverse"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "validationLevel": "strict",
+    "validationAction": "error"
+  }
+}
